@@ -4,7 +4,10 @@ plugins {
 }
 
 android {
-    buildFeatures.viewBinding = true
+    buildFeatures {
+        dataBinding= true
+        viewBinding = true
+    }
     namespace = "com.naeemnoman.simpleuserprofile"
     compileSdk = 35
 
@@ -47,6 +50,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    val lifecycle_version = "2.8.7"
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")

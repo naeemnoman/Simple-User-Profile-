@@ -36,19 +36,20 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity,MainActivity::class.java))
             finish()
         }
+        // Observe the LiveData for user data
         viewModel.user.observe(this, Observer { user ->
             user?.let {
-                adapter.updateData(listOf(user))
+                adapter.updateData(listOf(user))  // Update the RecyclerView with user data
             }
         })
 
-
+        // Observe error messages
         viewModel.errorMessage.observe(this, Observer { error ->
             error?.let {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()  // Show error message
             }
         })
 
-        viewModel.fetchUserProfile()
+        viewModel.fetchUserProfile()  // Trigger data fetching
     }
 }
